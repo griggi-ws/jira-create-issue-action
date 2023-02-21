@@ -13,8 +13,8 @@ async function exec () {
       jiraEmail: core.getInput('jiraEmail'),
       jiraToken: core.getInput('jiraToken')
     };
-    const base64token = Buffer.from(`${inputs.jiraEmail}:${inputs.jiraToken}`).toString('base64');
-    const response = await new CreateJiraIssueAction(inputs.jiraBaseUrl, inputs.project, inputs.issuetype, inputs.summary, inputs.description, inputs.labels.split(','), base64token).execute();
+    //const base64token = Buffer.from(`${inputs.jiraEmail}:${inputs.jiraToken}`).toString('base64');
+    const response = await new CreateJiraIssueAction(inputs.jiraBaseUrl, inputs.project, inputs.issuetype, inputs.summary, inputs.description, inputs.labels.split(','), inputs.jiraToken).execute();
     console.log(response);
     core.setOutput("issue", response.data.key);
   } catch (error) {

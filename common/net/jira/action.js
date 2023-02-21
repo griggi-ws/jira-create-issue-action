@@ -14,7 +14,7 @@ class CreateJiraIssueAction {
       async execute() {
           let config = {
               headers: {
-                  'Authorization': `Basic ${this.token}`,
+                  'Authorization': `Bearer ${this.token}`,
               }
           }
 
